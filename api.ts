@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "smart-paie-api-production.up.railway.app",
+  baseURL: "https://smart-paie-api-production.up.railway.app/api",
   timeout: 30000,
   headers: { "Content-Type": "application/json" },
 });
