@@ -7,7 +7,8 @@
     "dev":     "vite --https",
     "build":   "vite build",
     "preview": "vite preview --https",
-    "lint":    "eslint src --ext .ts,.tsx"
+    "lint":    "eslint src --ext .ts,.tsx",
+    "preinstall": "npx -y package-lock-json-parser fix || true"
   },
   "dependencies": {
     "react":             "^18.2.0",
