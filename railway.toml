@@ -1,0 +1,6 @@
+[build]
+builder = "NIXPACKS"
+
+[deploy]
+startCommand = "npx -y static-server dist -p $PORT --spa"
+restartPolicyType = "ON_FAILURE"
