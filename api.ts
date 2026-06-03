@@ -1,0 +1,27 @@
+import axios from "axios";
+
+const api = axios.create({
+  baseURL: "smart-paie-api-production.up.railway.app",
+  timeout: 30000,
+  headers: { "Content-Type": "application/json" },
+});
+
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem("smart_paie_token");
+  if (token) config.headers.Authorization = `Bearer ${token}`;
+  return config;
+});
+
+api.interceptors.response.use(
+  (res) => res,
+  (err) => {
+    if (err.response?.status === 401) {
+      localStorage.removeItem("smart_paie_token");
+      localStorage.removeItem("smart_paie_user");
+      window.location.href = "/login";
+    }
+    return Promise.reject(err);
+  }
+);
+
+export default api;
